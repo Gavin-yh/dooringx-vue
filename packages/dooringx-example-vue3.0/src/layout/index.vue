@@ -34,7 +34,7 @@ import Left from '../components/left/index'
 import RightConfig from '../components/right-config/index'
 import Header from '../components/header/index'
 import ContainerWrapper from '../components/container-wrapper/index'
-import { injectKey,UserConfig,innerContainerDragUp ,useStoreState} from '@dooring/dooringx-vue-lib';
+import { injectKey, UserConfig, innerContainerDragUp, useStoreState } from '@dooring/dooringx-vue-lib'
 import Container from '../components/container'
 export default defineComponent({
   name: 'Layout',
@@ -53,10 +53,10 @@ export default defineComponent({
 
     // const [storeState]=useStoreState(defaultConfig.value);
     // state.value=storeState
-    const storeState=ref(null);
-    watchEffect(()=>{
-     storeState.value=useStoreState(state.config);
-    });
+    const storeState = ref(null)
+    watchEffect(() => {
+      storeState.value = useStoreState(state.config)
+    })
 
     const { onMouseUp } = innerContainerDragUp(state.config)
     return {

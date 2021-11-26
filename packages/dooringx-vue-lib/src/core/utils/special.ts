@@ -7,4 +7,4 @@
  * @FilePath: /dooringx-vue/packages/dooringx-vue-lib/src/core/utils/special.ts
  */
 
-export const specialCoList = ['modalMask'];
+export const specialCoList = ['modalMask']

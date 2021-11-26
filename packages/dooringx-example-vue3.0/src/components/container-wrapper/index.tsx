@@ -15,8 +15,8 @@ export default defineComponent({
     config: { type: UserConfig }
   },
   setup(props) {
-    const slots=useSlots();
-    const wrapperRef = ref(null);
+    const slots = useSlots()
+    const wrapperRef = ref(null)
     // 渲染动态blocks
     const defaulgConfig = computed(() => {
       return props.config
@@ -34,11 +34,9 @@ export default defineComponent({
             flex: 1,
             position: 'relative',
             overflow: 'hidden',
-            userSelect: 'none',
-
+            userSelect: 'none'
           }}
-
-        {...wrapperEvent(wrapperRef.value, defaulgConfig.value)}
+          {...wrapperEvent(wrapperRef.value, defaulgConfig.value)}
         >
           {renderSlot(slots, 'default')}
         </div>

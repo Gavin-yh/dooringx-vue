@@ -13,7 +13,7 @@ import { ComponentItemFactory } from '@dooring/dooringx-vue-lib'
 import { ComponentRenderConfigProps } from '@dooring/dooringx-vue-lib/src/core/components/componentItem'
 import { createPannelOptions } from '@dooring/dooringx-vue-lib/src/core/components/formTypes'
 
-import { FormMap } from '../form-types';
+import { FormMap } from '../form-types'
 
 function ButtonTemp(pr: ComponentRenderConfigProps) {
   const props = pr.data.props

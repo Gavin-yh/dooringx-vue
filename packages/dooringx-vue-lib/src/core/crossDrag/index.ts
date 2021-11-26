@@ -44,24 +44,23 @@ export const dragEventResolve = function (item: LeftRegistComponentMapItem) {
 }
 
 export const containerDragResolve = (config: UserConfig) => {
-	const store = config.getStore();
-	return {
-    onDragenter:(e)=>{
+  const store = config.getStore()
+  return {
+    onDragenter: (e) => {
       // enter 添加一个移动标识
-      e.dataTransfer.dropEffect='move';
+      e.dataTransfer.dropEffect = 'move'
     },
-		onDragstart: () => {},
-		onDragover: (e: DragEvent) => {
-			e.preventDefault();
+    onDragstart: () => {},
+    onDragover: (e: DragEvent) => {
+      e.preventDefault()
     },
-    onDrangleave:(e)=>{
-      e.dataTransfer.dropEffect='none';
-
+    onDrangleave: (e) => {
+      e.dataTransfer.dropEffect = 'none'
     },
-		onDrop: (e: DragEvent) => {
-			const componentRegister = config.getComponentRegister();
-			const offsetX = Math.round(e.offsetX);
-			const offestY = Math.round(e.offsetY);
+    onDrop: (e: DragEvent) => {
+      const componentRegister = config.getComponentRegister()
+      const offsetX = Math.round(e.offsetX)
+      const offestY = Math.round(e.offsetY)
 
       //drop后修改store，
       if (currentDrag) {

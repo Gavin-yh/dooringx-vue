@@ -1,7 +1,7 @@
 /*
  * @Author: GeekQiaQia
  * @Date: 2021-11-17 13:38:18
- * @LastEditTime: 2021-11-25 21:42:05
+ * @LastEditTime: 2021-11-26 10:18:56
  * @LastEditors: GeekQiaQia
  * @Description:
  * @FilePath: /dooringx-vue/packages/dooringx-example-vue3.0/src/plugin/regist-components/button.tsx
@@ -15,7 +15,9 @@ import { createPannelOptions } from '@dooring/dooringx-vue-lib/src/core/componen
 
 import { FormMap } from '../form-types';
 
-function ButtonTemp(pr: ComponentRenderConfigProps) {
+
+
+    function ButtonTemp(pr: ComponentRenderConfigProps) {
   const props = pr.data.props
   return (
     <Button

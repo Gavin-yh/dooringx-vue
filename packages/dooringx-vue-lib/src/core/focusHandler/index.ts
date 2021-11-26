@@ -7,12 +7,11 @@
  * @FilePath: /dooringx-vue/packages/dooringx-vue-lib/src/core/focusHandler/index.ts
  */
 
-import UserConfig from "../../config";
-import { innerDragState } from '../innerDrag/state';
-import { IBlockType } from "../store/storeTypes";
-import { deepCopy } from "../utils";
-import { selectRangeMouseDown } from '../selectRange';
-
+import UserConfig from '../../config'
+import { innerDragState } from '../innerDrag/state'
+import { IBlockType } from '../store/storeTypes'
+import { deepCopy } from '../utils'
+import { selectRangeMouseDown } from '../selectRange'
 
 /**
  *
@@ -57,22 +56,22 @@ export function blockFocus(e: MouseEvent, item: IBlockType, config: UserConfig) 
 export function containerFocusRemove(config: UserConfig) {
   const store = config.getStore()
 
-	const onMousedown = (e: MouseEvent) => {
-		const focusState = config.getFocusState();
-		const clonedata = deepCopy(store.getData());
-		const newBlock = clonedata.block.map((v: IBlockType) => {
-			v.focus = false;
-			return v;
-		});
-		focusState.blocks = [];
-    store.setData({ ...clonedata, block: newBlock });
-     // 暂时屏蔽其他几种情况
-		if (!innerDragState.item) {
-			selectRangeMouseDown(e, config);
-		}
-		// unmountContextMenu();
-	};
-	return {
-		onMousedown,
-	};
+  const onMousedown = (e: MouseEvent) => {
+    const focusState = config.getFocusState()
+    const clonedata = deepCopy(store.getData())
+    const newBlock = clonedata.block.map((v: IBlockType) => {
+      v.focus = false
+      return v
+    })
+    focusState.blocks = []
+    store.setData({ ...clonedata, block: newBlock })
+    // 暂时屏蔽其他几种情况
+    if (!innerDragState.item) {
+      selectRangeMouseDown(e, config)
+    }
+    // unmountContextMenu();
+  }
+  return {
+    onMousedown
+  }
 }

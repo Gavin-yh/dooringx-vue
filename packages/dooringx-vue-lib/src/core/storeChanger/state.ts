@@ -7,5 +7,5 @@
  * @FilePath: /dooringx-vue/packages/dooringx-vue-lib/src/core/storeChanger/state.ts
  */
 export const storeChangerState = {
-	modalEditName: '',
-};
+  modalEditName: ''
+}

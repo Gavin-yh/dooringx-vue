@@ -33,8 +33,8 @@ export default defineComponent({
     ElConfigProvider
   },
   setup() {
-  // 注入可视化编辑器配置
-  provide(injectKey, config)
+    // 注入可视化编辑器配置
+    provide(injectKey, config)
 
     return {}
   }

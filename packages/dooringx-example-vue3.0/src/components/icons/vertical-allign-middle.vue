@@ -1,10 +1,10 @@
 <!--
  * @Author: GeekQiaQia
  * @Date: 2021-11-23 13:59:29
- * @LastEditTime: 2021-11-23 14:20:05
+ * @LastEditTime: 2021-11-26 11:13:45
  * @LastEditors: GeekQiaQia
  * @Description:
- * @FilePath: /dooringx-vue/packages/dooringx-example-vue3.0/src/components/icons/verticalAllignMiddle.vue
+ * @FilePath: /dooringx-vue/packages/dooringx-example-vue3.0/src/components/icons/vertical-allign-middle.vue
 -->
 
 <template>

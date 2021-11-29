@@ -12,7 +12,7 @@
       <Header />
     </el-header>
     <el-container class="layout-container">
-      <el-aside class="shadow-sm" width="380px">
+      <el-aside width="380px">
         <Left />
       </el-aside>
       <el-main>
@@ -20,8 +20,8 @@
           <Container :store-state="storeState" :config="config" context="edit"></Container>
         </container-wrapper>
       </el-main>
-      <el-aside class="shadow-sm" width="380px">
-        <RightConfig :store-state="storeState" :config="config"></RightConfig>
+      <el-aside width="380px">
+        <RightConfig :store-state="storeState"  :config="config"></RightConfig>
       </el-aside>
     </el-container>
   </el-container>
@@ -91,5 +91,9 @@ export default defineComponent({
   @media (min-width: 1111px) {
     overflow-x: hidden;
   }
+}
+
+.shadow-md {
+  box-shadow: 0px 4px 4px 1px rgba(0,0,0,0.12);
 }
 </style>

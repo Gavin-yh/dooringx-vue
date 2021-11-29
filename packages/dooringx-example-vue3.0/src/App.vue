@@ -7,7 +7,7 @@
  * @FilePath: /dooringx-vue/packages/dooringx-example-vue3.0/src/App.vue
 -->
 <template>
-  <el-config-provider locale="'/zh-CN'">
+  <el-config-provider :locale="enLocale">
     <div id="app">
       <router-view></router-view>
     </div>

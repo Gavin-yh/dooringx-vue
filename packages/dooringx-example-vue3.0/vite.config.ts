@@ -14,8 +14,6 @@ import { resolve } from 'path';
 // vite.config.ts
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-// windicss
-import WindiCSS from 'vite-plugin-windicss'
 // vant
 import styleImport from 'vite-plugin-style-import';
 const CWD = process.cwd()
@@ -37,7 +35,6 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     plugins: [           // 类型： (Plugin | Plugin[])[]  将要用到的插件数组
       vue(),
       vueJsx(),
-      WindiCSS(),
       legacy({
         targets: ['defaults', 'not IE 11']
       }),

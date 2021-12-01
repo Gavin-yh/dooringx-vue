@@ -21,7 +21,7 @@
         </container-wrapper>
       </el-main>
       <el-aside width="380px">
-        <RightConfig :store-state="storeState"  :config="config"></RightConfig>
+        <RightConfig :store-state="storeState" :config="config"></RightConfig>
       </el-aside>
     </el-container>
   </el-container>
@@ -94,6 +94,6 @@ export default defineComponent({
 }
 
 .shadow-md {
-  box-shadow: 0px 4px 4px 1px rgba(0,0,0,0.12);
+  box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.12);
 }
 </style>

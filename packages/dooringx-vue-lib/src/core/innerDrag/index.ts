@@ -1,7 +1,7 @@
 /*
  * @Author: GeekQiaQia
  * @Date: 2021-11-22 15:58:34
- * @LastEditTime: 2021-11-25 21:24:14
+ * @LastEditTime: 2021-12-01 10:25:15
  * @LastEditors: GeekQiaQia
  * @Description:
  * @FilePath: /dooringx-vue/packages/dooringx-vue-lib/src/core/innerDrag/index.ts
@@ -103,7 +103,6 @@ export const innerContainerDrag = function (config: UserConfig) {
           }
           return v
         })
-        ß
       } else {
         // 改变focus block的 left  top属性；
         newblock = store.getData().block.map((v) => {

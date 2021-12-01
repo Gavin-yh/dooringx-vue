@@ -1,7 +1,7 @@
 /*
  * @Author: GeekQiaQia
  * @Date: 2021-11-16 17:17:35
- * @LastEditTime: 2021-11-25 18:07:53
+ * @LastEditTime: 2021-12-01 15:16:04
  * @LastEditors: GeekQiaQia
  * @Description:
  * @FilePath: /dooringx-vue/packages/dooringx-vue-lib/src/index.ts
@@ -19,6 +19,7 @@ export { default as UserConfig } from './config/index'
 export { defaultStore } from './config'
 
 export type { IStoreData, IBlockType } from './core/store/storeTypes'
+export type { CreateOptionsRes } from './core/components/formTypes'
 // 初始化store时候使用
 export { useStoreState } from './hooks'
 

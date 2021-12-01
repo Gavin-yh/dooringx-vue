@@ -1,7 +1,7 @@
 <!--
  * @Author: GeekQiaQia
  * @Date: 2021-11-11 16:29:01
- * @LastEditTime: 2021-11-25 21:21:40
+ * @LastEditTime: 2021-12-01 16:04:36
  * @LastEditors: GeekQiaQia
  * @Description:
  * @FilePath: /dooringx-vue/packages/dooringx-example-vue3.0/src/layout/index.vue
@@ -57,6 +57,8 @@ export default defineComponent({
     watchEffect(() => {
       storeState.value = useStoreState(state.config)
     })
+
+    console.log('storeState.value', state)
 
     const { onMouseUp } = innerContainerDragUp(state.config)
     return {

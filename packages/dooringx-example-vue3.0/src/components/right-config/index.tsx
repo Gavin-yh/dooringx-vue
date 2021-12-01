@@ -1,14 +1,15 @@
 /*
  * @Author: GeekQiaQia
  * @Date: 2021-11-24 17:32:06
- * @LastEditTime: 2021-11-25 21:31:11
+ * @LastEditTime: 2021-12-01 16:05:07
  * @LastEditors: GeekQiaQia
  * @Description:
  * @FilePath: /dooringx-vue/packages/dooringx-example-vue3.0/src/components/right-config/index.tsx
  */
 
 import { defineComponent, reactive, computed, ref, watchEffect, inject } from 'vue'
-import { injectKey, UserConfig, IBlockType, IStoreData, deepCopy } from '@dooring/dooringx-vue-lib'
+import { injectKey, UserConfig, IBlockType, IStoreData, deepCopy, CreateOptionsRes } from '@dooring/dooringx-vue-lib'
+
 import './index.scss'
 export default defineComponent({
   name: 'ReftConfig',
@@ -85,6 +86,30 @@ export default defineComponent({
 
     const handleClick = (tab: any, event: any) => {
       activeTab.activeType = tab.instance.attrs.type
+    }
+
+    const render = (type: string, current: IBlockType) => {
+      const fn = () => defaultConfig.value.getComponentRegister().getComp(current.name)
+      const data = fn()
+      // 获取当前组件属性
+      // 这里不可能拿不到组件，因为点击的那个组件已经渲染出来了
+      if (data) {
+        const renderList = data.props[type]
+
+        if (renderList) {
+          return renderList.map((v, i) => {
+            const Component = defaultConfig.value.getFormRegister().formMap[v.type]
+            if (!Component) {
+              console.error(`you might forgot to regist form component ${v.type}`)
+              return null
+            }
+            return <Component key={i} data={v as CreateOptionsRes<any, any>} current={current} config={props.config}></Component>
+          })
+        } else {
+          return <div>还没有配置属性</div>
+        }
+      }
+      return null
     }
 
     watchEffect(() => {
@@ -167,26 +192,7 @@ export default defineComponent({
                   )
                 }}
               >
-                {/* <div class="leftco">
-                  {
-                    checkList.value.map((list)=>(
-                     <>
-                       <div
-                        class="coitem"
-                        {...dragEventResolve(list)}
-                       >
-                        <div class="redbox">
-                          <i class={` icon iconfont ${list.img}`}></i>
-                          </div>
-                          <div class="displayName">
-                          {list.displayName}
-                        </div>
-
-                        </div>
-                      </>
-                    ))
-                  }
-                </div> */}
+                {render(tabItem.type, current.value)}
               </el-tab-pane>
             ))}
           </el-tabs>

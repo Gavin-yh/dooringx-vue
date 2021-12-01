@@ -1,7 +1,7 @@
 /*
  * @Author: GeekQiaQia
  * @Date: 2021-11-16 21:38:15
- * @LastEditTime: 2021-11-25 21:41:38
+ * @LastEditTime: 2021-12-01 13:31:55
  * @LastEditors: GeekQiaQia
  * @Description:
  * @FilePath: /dooringx-vue/packages/dooringx-example-vue3.0/src/plugin/index.tsx
@@ -10,6 +10,7 @@
 import type { InitConfig } from '@dooring/dooringx-vue-lib'
 import { LeftRegistComponentMapItem } from '@dooring/dooringx-vue-lib/src/core/crossDrag'
 import Button from './regist-components/button'
+import { Formmodules } from './regist-form-components'
 // 物料中心组件所有注册组件Map;
 const LeftRegistMap: LeftRegistComponentMapItem[] = [
   {
@@ -104,5 +105,6 @@ export const defaultConfig: Partial<InitConfig> = {
   ],
   initComponentCache: {
     button: { component: Button }
-  }
+  },
+  initFormComponents: Formmodules
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: GeekQiaQia
  * @Date: 2021-11-17 13:38:18
- * @LastEditTime: 2021-11-25 21:42:05
+ * @LastEditTime: 2021-12-01 16:08:59
  * @LastEditors: GeekQiaQia
  * @Description:
  * @FilePath: /dooringx-vue/packages/dooringx-example-vue3.0/src/plugin/regist-components/button.tsx
@@ -12,8 +12,8 @@ import { ComponentItemFactory } from '@dooring/dooringx-vue-lib'
 
 import { ComponentRenderConfigProps } from '@dooring/dooringx-vue-lib/src/core/components/componentItem'
 import { createPannelOptions } from '@dooring/dooringx-vue-lib/src/core/components/formTypes'
-
 import { FormMap } from '../form-types'
+import { CommonStyle } from './common'
 
 function ButtonTemp(pr: ComponentRenderConfigProps) {
   const props = pr.data.props
@@ -49,70 +49,71 @@ const MButton = new ComponentItemFactory(
   '按钮',
   {
     style: [
+      ...CommonStyle,
       createPannelOptions<FormMap, 'input'>('input', {
         receive: 'text', //用于发送回的props，必传 ,跨组件传递需要指定额外字段
         label: '文字'
-      }),
-      createPannelOptions<FormMap, 'color'>('color', {
-        receive: 'backgroundColor',
-        label: '背景颜色',
-        value: 'rgba(255,255,255,1)'
-      }),
-      createPannelOptions<FormMap, 'font'>('font', {
-        receive: 'fontData', //用于发送回的props，必传 ,跨组件传递需要指定额外字
-        label: '字号',
-        data: {
-          fontSize: 14,
-          fontStyle: '',
-          textDecoration: '',
-          color: '',
-          fontWeight: ''
-        }
-      }),
-      createPannelOptions<FormMap, 'inputNumber'>('inputNumber', {
-        receive: 'lineHeight',
-        label: '行高',
-        value: 2
-      }),
-      createPannelOptions<FormMap, 'inputNumber'>('inputNumber', {
-        receive: 'borderRadius',
-        label: '边框圆角',
-        value: 2
-      }),
-      createPannelOptions<FormMap, 'border'>('border', {
-        receive: 'borderData',
-        label: '边框',
-        data: {
-          borderWidth: 2,
-          borderColor: 'rgba(0,0,0,1)',
-          borderRadius: 2,
-          borderStyle: 'solid'
-        },
-        option: [
-          {
-            value: 'solid',
-            text: '实线'
-          },
-          {
-            value: 'dotted',
-            text: '圆点'
-          },
-          {
-            value: 'dashed',
-            text: '虚线'
-          }
-        ]
-      }),
-      createPannelOptions<FormMap, 'boxShadow'>('boxShadow', {
-        receive: 'boxShadowData',
-        label: '阴影',
-        data: {
-          xOffset: 2,
-          yOffset: 2,
-          blurRadius: 4,
-          color: 'rgba(82,113,237,1)'
-        }
       })
+      // createPannelOptions<FormMap, 'color'>('color', {
+      //   receive: 'backgroundColor',
+      //   label: '背景颜色',
+      //   value: 'rgba(255,255,255,1)'
+      // }),
+      // createPannelOptions<FormMap, 'font'>('font', {
+      //   receive: 'fontData', //用于发送回的props，必传 ,跨组件传递需要指定额外字
+      //   label: '字号',
+      //   data: {
+      //     fontSize: 14,
+      //     fontStyle: '',
+      //     textDecoration: '',
+      //     color: '',
+      //     fontWeight: ''
+      //   }
+      // }),
+      // createPannelOptions<FormMap, 'inputNumber'>('inputNumber', {
+      //   receive: 'lineHeight',
+      //   label: '行高',
+      //   value: 2
+      // }),
+      // createPannelOptions<FormMap, 'inputNumber'>('inputNumber', {
+      //   receive: 'borderRadius',
+      //   label: '边框圆角',
+      //   value: 2
+      // }),
+      // createPannelOptions<FormMap, 'border'>('border', {
+      //   receive: 'borderData',
+      //   label: '边框',
+      //   data: {
+      //     borderWidth: 2,
+      //     borderColor: 'rgba(0,0,0,1)',
+      //     borderRadius: 2,
+      //     borderStyle: 'solid'
+      //   },
+      //   option: [
+      //     {
+      //       value: 'solid',
+      //       text: '实线'
+      //     },
+      //     {
+      //       value: 'dotted',
+      //       text: '圆点'
+      //     },
+      //     {
+      //       value: 'dashed',
+      //       text: '虚线'
+      //     }
+      //   ]
+      // }),
+      // createPannelOptions<FormMap, 'boxShadow'>('boxShadow', {
+      //   receive: 'boxShadowData',
+      //   label: '阴影',
+      //   data: {
+      //     xOffset: 2,
+      //     yOffset: 2,
+      //     blurRadius: 4,
+      //     color: 'rgba(82,113,237,1)'
+      //   }
+      // })
     ]
   },
   {
@@ -121,29 +122,28 @@ const MButton = new ComponentItemFactory(
       size: 'normal',
       type: 'primary',
       color: '#7232dd',
-
-      sizeData: [100, 30],
-      backgroundColor: 'rgba(0,132,255,1)',
-      lineHeight: 1,
-      borderRadius: 0,
-      borderData: {
-        borderWidth: 0,
-        borderColor: 'rgba(0,0,0,1)',
-        borderStyle: 'solid'
-      },
-      fontData: {
-        fontSize: 14,
-        textDecoration: 'none',
-        fontStyle: 'normal',
-        color: 'rgba(255,255,255,1)',
-        fontWeight: 'normal'
-      },
-      boxShadowData: {
-        xOffset: 0,
-        yOffset: 0,
-        blurRadius: 4,
-        color: 'rgba(255,255,255,0)'
-      }
+      sizeData: [100, 30]
+      // backgroundColor: 'rgba(0,132,255,1)',
+      // lineHeight: 1,
+      // borderRadius: 0,
+      // borderData: {
+      //   borderWidth: 0,
+      //   borderColor: 'rgba(0,0,0,1)',
+      //   borderStyle: 'solid'
+      // },
+      // fontData: {
+      //   fontSize: 14,
+      //   textDecoration: 'none',
+      //   fontStyle: 'normal',
+      //   color: 'rgba(255,255,255,1)',
+      //   fontWeight: 'normal'
+      // },
+      // boxShadowData: {
+      //   xOffset: 0,
+      //   yOffset: 0,
+      //   blurRadius: 4,
+      //   color: 'rgba(255,255,255,0)'
+      // }
     }
   },
   (data, context) => {

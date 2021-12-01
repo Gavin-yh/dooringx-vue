@@ -1,7 +1,7 @@
 /*
  * @Author: GeekQiaQia
  * @Date: 2021-11-16 17:52:10
- * @LastEditTime: 2021-11-25 18:08:53
+ * @LastEditTime: 2021-12-01 14:05:24
  * @LastEditors: GeekQiaQia
  * @Description:
  * @FilePath: /dooringx-vue/packages/dooringx-vue-lib/src/config/index.tsx
@@ -15,6 +15,7 @@ import Store from '../core/store'
 import { focusState } from '../core/focusHandler/state'
 import { scaleState } from '../core/scale/state'
 import { StoreChanger } from '../core/storeChanger'
+import { FormComponentRegister, formComponentRegisterFn } from '../core/components/formComponentRegister'
 
 /**
  *
@@ -110,6 +111,17 @@ export interface InitConfig {
 
   /**
    *
+   *  右侧配置项
+   * @type {(Record<
+   *   string,
+   *   FunctionComponent<any> | ComponentClass<any, any>   // for test  any type temp
+   * >)}
+   * @memberof InitConfig
+   */
+  initFormComponents: Record<string, any>
+
+  /**
+   *
    * 内置数据中心配置数据
    * @memberof InitConfig
    */
@@ -129,7 +141,8 @@ export const defaultConfig: InitConfig = {
   leftAllRegistMap: [],
   leftRenderListCategory: [],
   rightRenderListCategory: [],
-  initComponentCache: {}
+  initComponentCache: {},
+  initFormComponents: {}
 }
 
 /**
@@ -155,7 +168,8 @@ export function userConfigMerge(a: Partial<InitConfig>, b?: Partial<InitConfig>)
     leftAllRegistMap: [],
     leftRenderListCategory: [],
     rightRenderListCategory: [],
-    initComponentCache: {}
+    initComponentCache: {},
+    initFormComponents: {}
   }
   if (!b) {
     return userConfigMerge(mergeConfig, a)
@@ -189,6 +203,11 @@ export function userConfigMerge(a: Partial<InitConfig>, b?: Partial<InitConfig>)
     ...a.initComponentCache,
     ...b.initComponentCache
   }
+
+  mergeConfig.initFormComponents = {
+    ...a.initFormComponents,
+    ...b.initFormComponents
+  }
   return mergeConfig
 }
 
@@ -202,6 +221,8 @@ export class UserConfig {
   public initConfig: InitConfig
   public store = new Store()
   public componentRegister = new ComponentRegister()
+  public formRegister = new FormComponentRegister()
+
   public scaleState = scaleState
   public storeChanger = new StoreChanger()
 
@@ -223,8 +244,9 @@ export class UserConfig {
   }
   // 执行组件注册
   toRegist() {
-    // const modules = this.initConfig.initFormComponents;
-    // formComponentRegisterFn(this.formRegister, modules);
+    //  执行form 表单组件注册
+    const modules = this.initConfig.initFormComponents
+    formComponentRegisterFn(this.formRegister, modules)
 
     const cache = this.initConfig.initComponentCache
     this.componentCache = cache
@@ -315,9 +337,9 @@ export class UserConfig {
   // getContextMenuState() {
   // 	return this.contextMenuState;
   // }
-  // getFormRegister() {
-  // 	return this.formRegister;
-  // }
+  getFormRegister() {
+    return this.formRegister
+  }
   // getCommanderRegister() {
   // 	return this.commanderRegister;
   // }

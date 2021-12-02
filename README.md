@@ -33,6 +33,11 @@ dooringx-lib 在运行时维护一套数据流，主要分为json数据部分，
 
 📦 Components auto importing
 
+## 工程化 | Project Tool
+- Git Hook 工具：[husky](https://typicode.github.io/husky/#/) + [lint-staged](https://github.com/okonet/lint-staged)
+- 代码规范：[EditorConfig](http://editorconfig.org) + [Prettier](https://prettier.io/) + [ESLint](https://eslint.org/) + [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript#translation)
+- 提交规范：[Commitizen](http://commitizen.github.io/cz-cli/) + [Commitlint](https://commitlint.js.org/#/)
+
 
 ## 文档 | Doc
 

@@ -1,7 +1,7 @@
 <!--
  * @Author: GeekQiaQia
  * @Date: 2021-11-11 16:29:01
- * @LastEditTime: 2021-12-01 16:04:36
+ * @LastEditTime: 2021-12-02 10:27:08
  * @LastEditors: GeekQiaQia
  * @Description:
  * @FilePath: /dooringx-vue/packages/dooringx-example-vue3.0/src/layout/index.vue
@@ -13,7 +13,7 @@
     </el-header>
     <el-container class="layout-container">
       <el-aside width="380px">
-        <Left />
+        <LeftConfig />
       </el-aside>
       <el-main>
         <container-wrapper :config="config">
@@ -30,7 +30,7 @@
 <script lang="ts">
 import { defineComponent, reactive, computed, toRefs, ref, watchEffect, inject } from 'vue'
 
-import Left from '../components/left/index'
+import LeftConfig from '../components/left-config/index'
 import RightConfig from '../components/right-config/index'
 import Header from '../components/header/index'
 import ContainerWrapper from '../components/container-wrapper/index'
@@ -40,7 +40,7 @@ export default defineComponent({
   name: 'Layout',
   components: {
     Header,
-    Left,
+    LeftConfig,
     RightConfig,
     ContainerWrapper,
     Container
@@ -51,8 +51,6 @@ export default defineComponent({
       config
     })
 
-    // const [storeState]=useStoreState(defaultConfig.value);
-    // state.value=storeState
     const storeState = ref(null)
     watchEffect(() => {
       storeState.value = useStoreState(state.config)

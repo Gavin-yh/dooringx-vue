@@ -1,13 +1,13 @@
 /*
  * @Author: GeekQiaQia
  * @Date: 2021-11-19 18:26:05
- * @LastEditTime: 2021-11-23 17:30:26
+ * @LastEditTime: 2021-12-01 17:14:25
  * @LastEditors: GeekQiaQia
  * @Description: 用来渲染block 组件；
  * @FilePath: /dooringx-vue/packages/dooringx-example-vue3.0/src/components/blocks.tsx
  */
 
-import { defineComponent, computed, reactive, inject, ref, CSSProperties } from 'vue'
+import { defineComponent, computed, reactive, inject, watchEffect, ref, CSSProperties } from 'vue'
 import { injectKey, UserConfig } from '@dooring/dooringx-vue-lib'
 import { innerDrag } from '@dooring/dooringx-vue-lib'
 import './index.scss'
@@ -15,7 +15,8 @@ export default defineComponent({
   name: 'ContainerWrapper',
   props: {
     data: { type: Object },
-    context: { type: String }
+    context: { type: String },
+    config: { type: UserConfig }
   },
   setup(props) {
     const blockStyles = computed<CSSProperties>((): CSSProperties => {
@@ -27,9 +28,10 @@ export default defineComponent({
         display: props.data!.display,
         transform: `rotate(${props.data!.rotate.value}deg)`
       }
-      // return {
-      //   opacity: props?.iframe ? 0 : 1,
-      // }
+    })
+
+    const defaultConfig = computed(() => {
+      return props.config
     })
 
     const previewState = computed(() => {
@@ -45,9 +47,12 @@ export default defineComponent({
       return props.data
     })
 
-    const config: UserConfig = inject(injectKey)
-    const component = config.componentRegister.getComp(block.value!.name)
-    const renderComponent = component.render(props.data!, props.context)
+    let renderComponent = null
+    watchEffect(() => {
+      const component = defaultConfig.value.componentRegister.getComp(block.value!.name)
+      renderComponent = component.render(props.data!, props.context)
+    })
+
     const blockRef = ref(null)
     const styleDrag: CSSProperties = block.value!.canDrag ? { pointerEvents: 'none' } : {}
     return () => {
@@ -58,7 +63,7 @@ export default defineComponent({
               class={block.value!.focus && block.value!.position !== 'static' ? 'editor_block dr_block_focus' : 'editor_block'}
               ref={blockRef}
               style={{ ...blockStyles.value }}
-              {...innerDrag(block.value!, config, blockRef.value)}
+              {...innerDrag(block.value!, defaultConfig.value, blockRef.value)}
             >
               {/* 绝对定位元素 */}
               {block.value!.position !== 'static' && <div style={{ ...styleDrag }}>{renderComponent}</div>}

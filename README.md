@@ -119,6 +119,10 @@ Contributions, issues and feature requests are welcome!.
 | h5-Dooring | [![rc][h5-badge]][h5-Dooring]     | [[GitHub][h5-Dooring]] |
 | v6.dooring | [![rc][v6-badge]][v6.dooring]     | [[GitHub][v6.dooring]] |
 | pc-Dooring | [![rc][pc-badge]][pc-Dooring]     | [[GitHub][pc-Dooring]] |
+| DooringX | [![rc][pc-badge]][DooringX-badge]     | [[GitHub][DooringX]] |
+
+
+
 
 
 
@@ -131,6 +135,11 @@ Contributions, issues and feature requests are welcome!.
 
 [pc-badge]: https://img.shields.io/badge/version-1.2-blue.svg?cacheSeconds=2592000
 [pc-Dooring]: https://github.com/MrXujiang/pc-Dooring
+
+
+[DooringX-badge]: https://img.shields.io/badge/npm-dooringx--lib-brightgreen
+[DooringX]: https://github.com/H5-Dooring/dooringx
+
 
 
 
@@ -146,7 +155,7 @@ Contributions, issues and feature requests are welcome!.
 - [大风吹 | 后台管理产品]()
 
 ### 技术交流 | Technical Communication
-
+<img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d41b5fec542444b4a28c00135ce27d42~tplv-k3u1fbpfcp-watermark.image" width="180px" />
 
 ## License
 

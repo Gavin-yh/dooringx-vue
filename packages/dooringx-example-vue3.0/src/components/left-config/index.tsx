@@ -1,7 +1,17 @@
+/*
+ * @Author: GeekQiaQia
+ * @Date: 2021-11-25 18:05:50
+ * @LastEditTime: 2021-12-02 13:42:44
+ * @LastEditors: GeekQiaQia
+ * @Description:
+ * @FilePath: /dooringx-vue/packages/dooringx-example-vue3.0/src/components/left-config/index.tsx
+ */
 import { defineComponent, reactive, computed, ref, inject } from 'vue'
 import { injectKey, UserConfig } from '@dooring/dooringx-vue-lib'
 import './index.scss'
 import { dragEventResolve } from '@dooring/dooringx-vue-lib'
+import { Search } from '@element-plus/icons'
+
 export default defineComponent({
   name: 'LeftConfig',
   setup() {
@@ -43,6 +53,14 @@ export default defineComponent({
                 )
               }}
             >
+              <el-row justify="center" align="middle" style={{ marginTop: '10px', marginBottom: '10px', marginRight: '5px' }}>
+                <el-col span={6}>
+                  <span class="displayName">{state.activeName}</span>
+                </el-col>
+                <el-col span={18}>
+                  <el-input placeholder="Type for search" prefix-icon={Search} />
+                </el-col>
+              </el-row>
               <div class="leftco">
                 {checkList.value.map((list) => (
                   <>

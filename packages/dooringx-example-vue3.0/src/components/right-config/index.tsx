@@ -1,7 +1,7 @@
 /*
  * @Author: GeekQiaQia
  * @Date: 2021-11-24 17:32:06
- * @LastEditTime: 2021-12-01 16:05:07
+ * @LastEditTime: 2021-12-01 16:48:50
  * @LastEditors: GeekQiaQia
  * @Description:
  * @FilePath: /dooringx-vue/packages/dooringx-example-vue3.0/src/components/right-config/index.tsx
@@ -89,6 +89,7 @@ export default defineComponent({
     }
 
     const render = (type: string, current: IBlockType) => {
+      console.log('current', current)
       const fn = () => defaultConfig.value.getComponentRegister().getComp(current.name)
       const data = fn()
       // 获取当前组件属性
@@ -120,6 +121,7 @@ export default defineComponent({
         }
         return v.focus === true
       })
+      console.log('current change', state.value)
       if (item) {
         current.value = item
       } else {

@@ -1,13 +1,13 @@
 /*
  * @Author: GeekQiaQia
  * @Date: 2021-11-19 16:23:09
- * @LastEditTime: 2021-12-01 16:08:22
+ * @LastEditTime: 2021-12-01 17:07:42
  * @LastEditors: GeekQiaQia
  * @Description: 画布组件用来展示画布
  * @FilePath: /dooringx-vue/packages/dooringx-example-vue3.0/src/components/container.tsx
  */
 
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, watchEffect, ref } from 'vue'
 import Blocks from './blocks'
 import { containerResizer, wrapperMoveState, UserConfig } from '@dooring/dooringx-vue-lib'
 import { containerDragResolve, innerContainerDrag, containerFocusRemove } from '@dooring/dooringx-vue-lib'
@@ -33,6 +33,14 @@ export default defineComponent({
 
     const state = computed(() => {
       return props.storeState
+    })
+    const blocks = ref(null)
+    // 当依赖属性变化的时候，自动执行副作用
+    watchEffect(() => {
+      let newVal = state.value
+      console.log(newVal)
+      blocks.value = newVal.block
+      console.log('blocks.value', blocks.value)
     })
 
     const bgColor = () => {
@@ -74,8 +82,8 @@ export default defineComponent({
                   <NormalMarkLineRender config={props.config} iframe={false}></NormalMarkLineRender>
                 )}
                 */}
-                {state.value.block.map((v) => {
-                  return <Blocks key={v.id} data={v} context={props.context}></Blocks>
+                {blocks.value.map((v) => {
+                  return <Blocks key={v.id} data={v} context={props.context} config={defaultConfig.value}></Blocks>
                 })}
               </div>
             </div>
@@ -107,7 +115,7 @@ export default defineComponent({
               // ...previewContainerStyle,
             }}
           >
-            {state.value.block.map((v) => {
+            {blocks.value.map((v) => {
               return <Blocks key={v.id} config={props.config} data={v} context={props.context}></Blocks>
             })}
           </div>

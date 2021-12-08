@@ -8,6 +8,7 @@
  */
 import { defineComponent, computed, renderSlot, useSlots, ref } from 'vue'
 import { wrapperEvent, UserConfig } from '@dooring/dooringx-vue-lib'
+import Ticker from '../ticker'
 
 export default defineComponent({
   name: 'ContainerWrapper',
@@ -39,6 +40,8 @@ export default defineComponent({
           {...wrapperEvent(wrapperRef.value, defaulgConfig.value)}
         >
           {renderSlot(slots, 'default')}
+
+          {defaulgConfig.value?.ticker && <Ticker config={defaulgConfig.value} />}
         </div>
       </>
     )
